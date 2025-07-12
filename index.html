@@ -6,6 +6,8 @@
     <title>Ebofin Ayobami - My Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
     <script>
         tailwind.config = {
             theme: {
@@ -19,6 +21,40 @@
             }
         }
     </script>
+    <style>
+            .animate-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.0s ease-out;
+        }
+        
+        .skill-bar {
+            transition: width 1.8s ease-in;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.4s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
     <!-- Navigation -->
@@ -82,6 +118,7 @@
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-white">
+	  <div data-aos="fade-right">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">About Me</h2>
@@ -110,11 +147,13 @@
                     </div>
                 </div>
         </div>
+        </div>
     </section>
 
   <!-- Skills -->
   <section id="skills" class="py-20 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-4" data-aos="fade-up">
+	  <div data-aos="fade-up">
+    <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-12">Skills & Technologies</h2>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-white p-6 rounded shadow hover:shadow-md transition">
@@ -143,6 +182,7 @@
         </div>
       </div>
     </div>
+    </div>
   </section>
 
 
@@ -157,7 +197,7 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border">
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border" data-aos="fade-left">
                     <img src="e-commerce.webp" alt="E-commerce Platform" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-gray-800 mb-2">E-commerce Website Demo - Clothing Brand</h3>
@@ -177,7 +217,7 @@
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border">
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border" data-aos="fade-left">
                     <img src="healer2.webp" alt="Home Page Redesign – Practice Project" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-gray-800 mb-2">Home Page Redesign - Practice Project</h3>
@@ -197,7 +237,7 @@
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border">
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border" data-aos="fade-left">
                     <img src="joshlens.webp" alt="JoshLens" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-gray-800 mb-2">JoshLens - Photography Booking & Showcase Website</h3>
@@ -218,7 +258,7 @@
                 </div>
                 
                 <!-- Project 4 -->
-                  <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border">
+                  <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border" data-aos="fade-left">
                     <img src="mowalek.png" alt="Mowalek" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-gray-800 mb-2">Mowalek Bridals - Event & Bridal Services Landing Page</h3>
@@ -238,7 +278,7 @@
                 </div>
                 
             <!-- Project 5 -->
-                  <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border">
+                  <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border" data-aos="fade-left">
                     <img src="heal.png" alt="The Healers" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-gray-800 mb-2">The Healers Embassy - Business & Cosmic Guidance Site</h3>
@@ -260,12 +300,35 @@
                     </div>
                 </div>     
                 
+                <!-- Project 6 -->
+                  <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border" data-aos="fade-left">
+                    <img src="citypulse.png" alt="CityPulse" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">CityPulse Live - Concert & Movie Premiere Booking Pagee</h3>
+                        <p class="text-gray-600 mb-4">
+						A vibrant, mobile-first landing page designed for a live entertainment experience. Built with HTML, Tailwind CSS, and JavaScript, the site features dynamic elements such as an animated countdown timer, styled ticket tiers, and a booking form connected to Google Sheets. It includes a simulated payment preview, email-based ticket delivery with a QR code, and a responsive gallery — all designed to capture the excitement of the event and streamline user interaction.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-blue-800 px-2 py-1 rounded text-sm">HTML5</span>
+                            <span class="bg-red-100 text-purple-800 px-2 py-1 rounded text-sm">Tailwind CSS</span>
+                            <span class="bg-pink-100 text-blue-800 px-2 py-1 rounded text-sm">JavaScript</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            
+                            <a href="https://citypulselive.netlify.app" class="text-primary hover:text-secondary transition-colors" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>     
+                
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-gray-50">
+	<div data-aos="fade-up">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">Get In Touch</h2>
@@ -352,6 +415,7 @@
                 </form>
             </div>
         </div>
+       </div>
     </section>
 
     <!-- Footer -->
@@ -510,40 +574,8 @@
         
         
     </script>
-
-    <style>
-        .animate-fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        
-        .skill-bar {
-            transition: width 1.5s ease-out;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #3b82f6;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-    </style>
+    
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	  <script>AOS.init();</script>
 </body>
 </html>
