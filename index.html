@@ -3,574 +3,812 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ebofin Ayobami - My Portfolio</title>
+    <title>Ebofin Ayobami - Full-Stack Developer | Business Websites That Convert</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#3b82f6',
-                        secondary: '#1e40af',
-                        accent: '#f59e0b'
+                        primary: '#6366f1',
+                        secondary: '#4f46e5',
+                        accent: '#f59e0b',
+                        dark: '#0f172a',
+                        'glass-white': 'rgba(255, 255, 255, 0.1)',
+                        'glass-dark': 'rgba(15, 23, 42, 0.1)'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'fade-in-up': 'fadeInUp 0.6s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'gradient-shift': 'gradientShift 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.3)' },
+                            '100%': { boxShadow: '0 0 40px rgba(99, 102, 241, 0.6)' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(100%)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        fadeInUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '0.8' },
+                            '50%': { transform: 'scale(1.05)', opacity: '1' }
+                        },
+                        gradientShift: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' }
+                        }
                     }
                 }
             }
         }
     </script>
+    
     <style>
-            .animate-fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1.0s ease-out;
+        body {
+            font-family: 'Inter', sans-serif;
         }
         
-        .skill-bar {
-            transition: width 1.8s ease-in;
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        html {
-            scroll-behavior: smooth;
+        .gradient-text {
+            background: linear-gradient(45deg, #6366f1, #8b5cf6, #06b6d4);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
         }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, 
+                rgba(99, 102, 241, 0.1) 0%, 
+                rgba(139, 92, 246, 0.05) 25%,
+                rgba(6, 182, 212, 0.1) 50%,
+                rgba(245, 158, 11, 0.05) 75%,
+                rgba(99, 102, 241, 0.1) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
+        }
+        
+              .fixed {
+      transition: background 0.3s ease, backdrop-filter 0.3s ease;
+      background: rgba(15, 23, 42, 0.6);
+    }
+    .fixed.scrolled {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(10px);
+    }
+    }
         
         .nav-link {
             position: relative;
+            overflow: hidden;
         }
         
-        .nav-link::after {
+        .nav-link::before {
             content: '';
             position: absolute;
-            width: 0;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
             height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #3b82f6;
-            transition: width 0.4s ease;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transition: left 0.4s ease;
         }
         
-        .nav-link:hover::after {
-            width: 100%;
+        .nav-link:hover::before {
+            left: 0;
         }
-    </style>
+        
+        .typing-animation::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .mouse {
+            width: 26px;
+            height: 46px;
+            border: 2px solid #6366f1;
+            border-radius: 13px;
+            position: relative;
+        }
+        
+        .mouse::before {
+            content: '';
+            width: 4px;
+            height: 10px;
+            background: #6366f1;
+            border-radius: 2px;
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scroll 2s infinite;
+        }
+        
+        @keyframes scroll {
+            0% { top: 8px; opacity: 1; }
+            100% { top: 24px; opacity: 0; }
+        }
+        
+        .tech-stack-item {
+            transition: all 0.3s ease;
+        }
+        
+        .tech-stack-item:hover {
+            transform: scale(1.05);
+            color: #6366f1;
+        }
+        
+        .project-image {
+            transition: all 0.5s ease;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+        
+        .stats-counter {
+            font-variant-numeric: tabular-nums;
+        }
+        
+				@keyframes fadeInUp {
+		  from {opacity: 0; transform: translateY(20px);}
+		  to {opacity: 1; transform: translateY(0);}
+		}
+		@keyframes fadeOutDown {
+		  from {opacity: 1; transform: translateY(0);}
+		  to {opacity: 0; transform: translateY(20px);}
+		}
+		.animate-fade-in-up {
+		  animation: fadeInUp 0.3s ease-out forwards;
+		}
+		.animate-fade-out-down {
+		  animation: fadeOutDown 0.3s ease-in forwards;
+		}
+        </style>
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
-<body class="bg-gray-50 text-gray-800">
+
+<body class="bg-slate-900 text-white overflow-x-hidden">
+    <!-- Floating Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute top-40 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-20 left-1/3 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl animate-float" style="animation-delay: 4s;"></div>
+    </div>
+
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300" id="navbar">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500" id="nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
-                <div class="text-2xl font-bold text-primary">
-                    <span class="text-gray-800">Ebofin</span><span class="text-primary">Ayobami</span>
+                <div class="text-2xl font-bold">
+                    <span class="gradient-text">Ebofin</span><span class="text-white">Ayobami</span>
                 </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link text-gray-700 hover:text-primary transition-colors">Home</a>
-                    <a href="#about" class="nav-link text-gray-700 hover:text-primary transition-colors">About</a>
-                    <a href="#skills" class="nav-link text-gray-700 hover:text-primary transition-colors">Skills</a>
-                    <a href="#projects" class="nav-link text-gray-700 hover:text-primary transition-colors">Projects</a>
-                    <a href="#contact" class="nav-link text-gray-700 hover:text-primary transition-colors">Contact</a>
+                    <a href="#home" class="nav-link text-gray-300 hover:text-white transition-colors py-2">Home</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white transition-colors py-2">About</a>
+                    <a href="#services" class="nav-link text-gray-300 hover:text-white transition-colors py-2">Services</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-white transition-colors py-2">Projects</a>
+                </div>
+                
+                <div class="hidden md:block">
+                    <a href="#contact" class="bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2 rounded-full hover:from-primary/80 hover:to-purple-600/80 transition-all duration-300 hover:scale-105">
+                        Let's Talk
+                    </a>
                 </div>
                 
                 <!-- Mobile Menu Button -->
-                <button class="md:hidden text-gray-700 hover:text-primary" id="mobile-menu-btn">
+                <button class="md:hidden text-white hover:text-primary transition-colors" id="mobile-menu-btn">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
             
             <!-- Mobile Menu -->
-            <div class="md:hidden hidden" id="mobile-menu">
-                <div class="py-4 space-y-4">
-                    <a href="#home" class="block text-gray-700 hover:text-primary transition-colors">Home</a>
-                    <a href="#about" class="block text-gray-700 hover:text-primary transition-colors">About</a>
-                    <a href="#skills" class="block text-gray-700 hover:text-primary transition-colors">Skills</a>
-                    <a href="#projects" class="block text-gray-700 hover:text-primary transition-colors">Projects</a>
-                    <a href="#contact" class="block text-gray-700 hover:text-primary transition-colors">Contact</a>
+            <div class="md:hidden hidden glass-effect rounded-lg mt-4 p-6" id="mobile-menu">
+                <div class="space-y-4">
+                    <a href="#home" class="block text-white hover:text-primary transition-colors">Home</a>
+                    <a href="#about" class="block text-white hover:text-primary transition-colors">About</a>
+                    <a href="#services" class="block text-white hover:text-primary transition-colors">Services</a>
+                    <a href="#projects" class="block text-white hover:text-primary transition-colors">Projects</a>
+                    <a href="#contact" class="block bg-gradient-to-r from-primary to-purple-600 text-white px-4 py-2 rounded-full text-center mt-4">
+                        Let's Talk
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 pt-20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="animate-fade-in">
-                <img src="me.webp" alt="Profile Picture" class="w-48 h-48 rounded-full mx-auto mb-8 shadow-lg object-cover">
-                <h1 class="text-5xl md:text-7xl font-bold text-gray-800 mb-4">
-                    Hi, I'm <span class="text-primary">Ebofin Ayobami</span>
+    <section id="home" class="min-h-screen flex items-center justify-center hero-gradient pt-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="animate-fade-in-up">
+                <!-- Profile Image with Animated Border -->
+                <div class="relative inline-block mb-8">
+                    <div class="w-48 h-48 rounded-full p-1 bg-gradient-to-r from-primary to-purple-600 animate-pulse-glow">
+                        <img src="me.webp" alt="Ebofin Ayobami" class="w-full h-full rounded-full object-cover">
+                    </div>
+                    <div class="absolute -top-4 -right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold animate-bounce-slow">
+                        Available
+                    </div>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    <span class="block text-gray-300">Hi,</span>
+                    <span class="gradient-text block">I'm Ebofin Ayobami</span>
                 </h1>
-                <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                    A passionate <span class="text-primary font-semibold">Full-Stack Web Developer</span> creating amazing websites that aligns perfectly with my clients ideas.
+                
+                <p class="text-xl md:text-2xl text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed">
+                    A passionate <span class="text-accent font-semibold"> Full-Stack Web Developer</span> 
+                    creating amazing websites that aligns perfectly with my clients ideas. 
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#projects" class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-secondary transition-colors font-semibold">
-                        View My Work
+                
+
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#projects" class="bg-gradient-to-r from-primary to-purple-600 text-white px-8 py-4 rounded-full hover:from-primary/80 hover:to-purple-600/80 transition-all duration-300 hover:scale-105 font-semibold flex items-center space-x-2">
+                        <span>View My Work</span>
+                        <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="#contact" class="border-2 border-primary text-primary px-8 py-3 rounded-lg hover:bg-primary hover:text-white transition-colors font-semibold">
-                        Get In Touch
+                    <a href="#contact" class="glass-effect text-white px-8 py-4 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-105 font-semibold flex items-center space-x-2">
+                        <span>Start Your Project</span>
+                        <i class="fas fa-rocket"></i>
                     </a>
                 </div>
             </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-	  <div data-aos="fade-right">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">About Me</h2>
-                <div class="w-20 h-1 bg-primary mx-auto"></div>
-            </div>
-            
-            <div class="">
-                <div class="space-y-6">
-                    <h3 class="text-2xl font-semibold text-gray-800">Hello! I'm Ebofin Ayobami,</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        I’m a passionate web developer with over 3 years of experience building responsive, user-centered websites and web applications. I specialize in creating clean, functional digital experiences using modern technologies that deliver real value.
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Column - Text -->
+                <div class="space-y-8">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                            <span class="gradient-text">Turning Ideas Into</span><br>
+                            <span class="text-white">Digital Success Stories</span>
+                        </h2>
+                        <div class="w-20 h-1 bg-gradient-to-r from-primary to-purple-600 mb-8"></div>
+                    </div>
+                    
+                    <p class="text-xl text-gray-300 leading-relaxed">
+                        I'm a passionate full-stack developer with <span class="text-primary font-semibold">3+ years</span> 
+                        of experience helping businesses establish their online presence and drive growth through 
+                        strategic web development.
                     </p>
-                    <p class="text-gray-600 leading-relaxed">
-                        Outside of coding, I enjoy exploring emerging technologies, contributing to open-source projects, and sharing insights through blog posts and interactive sessions.
+                    
+                    <p class="text-gray-400 leading-relaxed">
+                        I specialize in building scalable, performance-optimized websites that not only look 
+                        stunning but also convert visitors into customers. From responsive design to full-stack 
+                        applications, I deliver solutions that align with your business goals.
                     </p>
+                    
+                    <!-- Key Strengths -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            <span class="text-gray-300">Fast Development</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-purple-500 rounded-full"></div>
+                            <span class="text-gray-300">SEO Optimized</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-cyan-500 rounded-full"></div>
+                            <span class="text-gray-300">Mobile First</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-accent rounded-full"></div>
+                            <span class="text-gray-300">24/7 Support</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="inline-flex items-center space-x-2 text-primary hover:text-purple-400 transition-colors font-semibold">
+                        <span>Let's discuss your project</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-        </div>
+                
+                <!-- Right Column - Skills -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-white mb-8">Technical Expertise</h3>
+                    
+                    <!-- Frontend -->
+                    <div class="glass-effect rounded-xl p-6 card-hover">
+                        <h4 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                            <i class="fas fa-laptop-code mr-3"></i>
+                            Frontend Development
+                        </h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm tech-stack-item">React</span>
+                            <span class="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full text-sm tech-stack-item">JavaScript</span>
+                            <span class="bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-full text-sm tech-stack-item">Tailwind CSS</span>
+                            <span class="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full text-sm tech-stack-item">Vue.js</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Backend -->
+                    <div class="glass-effect rounded-xl p-6 card-hover">
+                        <h4 class="text-xl font-semibold text-purple-400 mb-4 flex items-center">
+                            <i class="fas fa-server mr-3"></i>
+                            Backend Development
+                        </h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-sm tech-stack-item">Node.js</span>
+                            <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm tech-stack-item">Express.js</span>
+                            <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-sm tech-stack-item">MongoDB</span>
+                            <span class="bg-orange-500/20 text-orange-300 px-3 py-1 rounded-full text-sm tech-stack-item">PHP</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Tools -->
+                    <div class="glass-effect rounded-xl p-6 card-hover">
+                        <h4 class="text-xl font-semibold text-cyan-400 mb-4 flex items-center">
+                            <i class="fas fa-tools mr-3"></i>
+                            Tools & Deployment
+                        </h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-gray-500/20 text-gray-300 px-3 py-1 rounded-full text-sm tech-stack-item">Git</span>
+                            <span class="bg-orange-500/20 text-orange-300 px-3 py-1 rounded-full text-sm tech-stack-item">AWS</span>
+                            <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm tech-stack-item">Docker</span>
+                            <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-sm tech-stack-item">Netlify</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-  <!-- Skills -->
-  <section id="skills" class="py-20 bg-gray-50">
-	  <div data-aos="fade-up">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Skills & Technologies</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded shadow hover:shadow-md transition">
-          <h3 class="text-xl font-semibold mb-4">Frontend</h3>
-          <ul class="space-y-2 text-gray-600">
-            <li>HTML / CSS / Tailwind</li>
-            <li>JavaScript / React</li>
-            <li>Vue.js / TypeScript</li>
-          </ul>
-        </div>
-        <div class="bg-white p-6 rounded shadow hover:shadow-md transition">
-          <h3 class="text-xl font-semibold mb-4">Backend</h3>
-          <ul class="space-y-2 text-gray-600">
-            <li>Next.js / Express.js</li>
-            <li>PHP / Python</li>
-            <li>MongoDB / MySQL</li>
-          </ul>
-        </div>
-        <div class="bg-white p-6 rounded shadow hover:shadow-md transition">
-          <h3 class="text-xl font-semibold mb-4">Tools</h3>
-          <ul class="space-y-2 text-gray-600">
-            <li>Git / GitHub</li>
-            <li>Docker / AWS</li>
-            <li>VS Code / CLI</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    </div>
-  </section>
-
-
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Services Section -->
+    <section id="services" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Featured Projects</h2>
-                <div class="w-20 h-1 bg-primary mx-auto"></div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                    <span class="gradient-text">Services</span> I Offer
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Comprehensive web development solutions tailored for businesses ready to grow online
+                </p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border" data-aos="fade-left">
-                    <img src="e-commerce.webp" alt="E-commerce Platform" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">E-commerce Website Demo - Clothing Brand</h3>
-                        <p class="text-gray-600 mb-4">A clean, responsive e-commerce website built with HTML, CSS, and JavaScript to showcase front-end development skills through a real-world store interface.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">HTML</span>
-                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">CSS</span>
-                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm">JS</span>
-                        </div>
-                        <div class="flex space-x-4">
-                        
-                            <a href="https://franc-store-te.netlify.app/" class="text-primary hover:text-secondary transition-colors" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
+                <!-- Service 1 -->
+                <div class="glass-effect rounded-2xl p-8 card-hover group">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-globe text-2xl text-white"></i>
                     </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Business Websites</h3>
+                    <p class="text-gray-400 mb-6">Professional websites that establish credibility and convert visitors into customers.</p>
+                    <ul class="text-gray-300 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>Responsive Design</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>SEO Optimization</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>Fast Loading</li>
+                    </ul>
                 </div>
                 
-                <!-- Project 2 -->
-                <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border" data-aos="fade-left">
-                    <img src="healer2.webp" alt="Home Page Redesign – Practice Project" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Home Page Redesign - Practice Project</h3>
-                        <p class="text-gray-600 mb-4">A redesigned, mobile-friendly landing page inspired by an existing website that needed visual and structural improvements. Built as a front-end practice project focused on layout, accessibility, and clean, interactive design.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">HTML5</span>
-                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm">CSS3</span>
-                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-sm">JS</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            
-                            <a href="https://the-healer-university-sub.netlify.app/" class="text-primary hover:text-secondary transition-colors" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
+                <!-- Service 2 -->
+                <div class="glass-effect rounded-2xl p-8 card-hover group">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-shopping-cart text-2xl text-white"></i>
                     </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">E-commerce Solutions</h3>
+                    <p class="text-gray-400 mb-6">Complete online stores with secure payment processing and inventory management.</p>
+                    <ul class="text-gray-300 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>Payment Integration</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>Product Management</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>Order Tracking</li>
+                    </ul>
                 </div>
                 
-                <!-- Project 3 -->
-                <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border" data-aos="fade-left">
-                    <img src="joshlens.webp" alt="JoshLens" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">JoshLens - Photography Booking & Showcase Website</h3>
-                        <p class="text-gray-600 mb-4">A fully responsive photography portfolio and booking website built with HTML, Tailwind CSS, and Formspree. It features a sleek hero section, interactive booking form, image gallery, and testimonials—all built on the frontend, making it ideal for small businesses and portfolios.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">Tailwind CSS</span>
-                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">HTML5</span>
-                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm">JavaScript</span>
-                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm">Formspree</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            
-                            <a href="https://joshlens.netlify.app" class="text-primary hover:text-secondary transition-colors" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
+                <!-- Service 3 -->
+                <div class="glass-effect rounded-2xl p-8 card-hover group">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-cogs text-2xl text-white"></i>
                     </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Web Applications</h3>
+                    <p class="text-gray-400 mb-6">Custom web applications that streamline your business processes and operations.</p>
+                    <ul class="text-gray-300 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>Custom Features</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>Database Integration</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>User Management</li>
+                    </ul>
                 </div>
                 
-                <!-- Project 4 -->
-                  <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border" data-aos="fade-left">
-                    <img src="mowalek.png" alt="Mowalek" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Mowalek Bridals - Event & Bridal Services Landing Page</h3>
-                        <p class="text-gray-600 mb-4">A modern, mobile-friendly landing page designed for a bridal and event services brand. Built using HTML, Tailwind CSS, and JavaScript, the website highlights key offerings such as catering, bridal prep, and event décor. It features elegant animations, a WhatsApp/e-mail-based inquiry form, and a visually engaging gallery - all crafted to reflect the luxurious, client-centered experience the brand offers.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">HTML5</span>
-                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">Tailwind CSS</span>
-                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm">JavaScript</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            
-                            <a href="https://mowalekevents.netlify.app" class="text-primary hover:text-secondary transition-colors" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
+                <!-- Service 4 -->
+                <div class="glass-effect rounded-2xl p-8 card-hover group">
+                    <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-mobile-alt text-2xl text-white"></i>
                     </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Mobile Optimization</h3>
+                    <p class="text-gray-400 mb-6">Ensure your website looks and works perfectly on all devices and screen sizes.</p>
+                    <ul class="text-gray-300 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>Mobile-First Design</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>Touch Optimization</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>Performance Testing</li>
+                    </ul>
                 </div>
                 
-            <!-- Project 5 -->
-                  <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border" data-aos="fade-left">
-                    <img src="heal.png" alt="The Healers" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">The Healers Embassy - Business & Cosmic Guidance Site</h3>
-                        <p class="text-sm text-gray-600 italic">Role: Front-End Developer & Active Site Manager (2025 - Present)</p>
-                        <p class="text-gray-600 mb-4">
-						Originally built by another developer, The Healers Embassy website was revamped and is now actively managed by me. I improved the site’s responsiveness and layout using HTML, Tailwind CSS, and JavaScript, integrated a contact form that delivers submissions directly to the client’s email, and continue to update and maintain the site's content, functionality, and overall user experience.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-green-100 text-blue-800 px-2 py-1 rounded text-sm">HTML5</span>
-                            <span class="bg-blue-100 text-orange-800 px-2 py-1 rounded text-sm">Tailwind CSS</span>
-                            <span class="bg-orange-100 text-purple-800 px-2 py-1 rounded text-sm">JavaScript</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            
-                            <a href="https://thehealersembassy.org/" class="text-primary hover:text-secondary transition-colors" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
+                <!-- Service 5 -->
+                <div class="glass-effect rounded-2xl p-8 card-hover group">
+                    <div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-chart-line text-2xl text-white"></i>
                     </div>
-                </div>     
+                    <h3 class="text-2xl font-bold text-white mb-4">Performance Optimization</h3>
+                    <p class="text-gray-400 mb-6">Speed up your existing website for better user experience and search rankings.</p>
+                    <ul class="text-gray-300 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>Speed Optimization</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>Code Cleanup</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>SEO Improvements</li>
+                    </ul>
+                </div>
                 
-                <!-- Project 6 -->
-                  <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border" data-aos="fade-left">
-                    <img src="citypulse.png" alt="CityPulse" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">CityPulse Live - Concert & Movie Premiere Booking Page</h3>
-                        <p class="text-gray-600 mb-4">
-						A vibrant, mobile-first landing page designed for a live entertainment experience. Built with HTML, Tailwind CSS, and JavaScript, the site features dynamic elements such as an animated countdown timer, styled ticket tiers, and a booking form connected to Google Sheets. It includes a simulated payment preview, email-based ticket delivery with a QR code, and a responsive gallery — all designed to capture the excitement of the event and streamline user interaction.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-green-100 text-blue-800 px-2 py-1 rounded text-sm">HTML5</span>
-                            <span class="bg-red-100 text-purple-800 px-2 py-1 rounded text-sm">Tailwind CSS</span>
-                            <span class="bg-pink-100 text-blue-800 px-2 py-1 rounded text-sm">JavaScript</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            
-                            <a href="https://citypulselive.netlify.app" class="text-primary hover:text-secondary transition-colors" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
+                <!-- Service 6 -->
+                <div class="glass-effect rounded-2xl p-8 card-hover group">
+                    <div class="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-headset text-2xl text-white"></i>
                     </div>
-                </div>     
-                
-               <!-- Project 7 -->
-                  <div class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden border" data-aos="fade-left">
-                    <img src="mealpal.png" alt="MealPal" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">skoolMealPal - A school-based food ordering platform</h3>
-                        <p class="text-sm text-gray-600 italic">Ongoing Personal Project</p>
-                        <p class="text-gray-600 mb-4">
-						Students browse meals filtered by their school, place orders with live location sharing, and track delivery status in real time. Vendors manage their menus, upload meals via Cloudinary, view earnings, and update order statuses through a dedicated dashboard.
-						The platform includes secure email verification for vendors, responsive UI design, featured meals logic, and a full cart + checkout flow - all designed to simplify campus-based food ordering and boost vendor visibility.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-green-100 text-blue-800 px-2 py-1 rounded text-sm">React</span>
-                            <span class="bg-red-100 text-purple-800 px-2 py-1 rounded text-sm">Tailwind CSS</span>
-                            <span class="bg-pink-100 text-blue-800 px-2 py-1 rounded text-sm">Node.js</span>
-                            <span class="bg-red-100 text-purple-800 px-2 py-1 rounded text-sm">Express</span>
-                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-sm">TMongo DB</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            
-                            <a href="https://skoolmealpal.vercel.app/" class="text-primary hover:text-secondary transition-colors" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>     
-                
+                    <h3 class="text-2xl font-bold text-white mb-4">Ongoing Support</h3>
+                    <p class="text-gray-400 mb-6">Continuous maintenance and support to keep your website running smoothly.</p>
+                    <ul class="text-gray-300 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>24/7 Monitoring</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>Regular Updates</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i>Bug Fixes</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50">
-	<div data-aos="fade-up">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Get In Touch</h2>
-                <div class="w-20 h-1 bg-primary mx-auto mb-4"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    I'm always open to new opportunities and creative collaborations. Let’s connect and bring your ideas to life.!
+    <!-- Projects Section -->
+	<section id="projects" class="py-20">
+    <div class="max-w-7xl mx-auto px-4">
+             <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                    Featured <span class="gradient-text">Projects</span> 
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Real projects that delivered measurable results for businesses and startups
                 </p>
             </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Contact Info -->
-                <div class="space-y-8">
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-primary text-white p-3 rounded-lg">
-                            <i class="fas fa-envelope text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-800">Email</h3>
-                            <p class="text-gray-600">ebocodes675@gmail.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-primary text-white p-3 rounded-lg">
-                            <i class="fas fa-phone text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-800">Phone</h3>
-                            <p class="text-gray-600">+234 (070) 4852-0538</p>
+            <!-- Project 1 -->
+            <div class="glass-effect rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-300" data-aos="fade-up">
+                <a href="https://franc-store-te.netlify.app/" target="_blank" class="block">
+                    <img src="e-commerce.webp" alt="E-commerce Website Demo - Clothing Brand" loading="lazy" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">E-commerce Website Demo - Clothing Brand</h3>
+                        <p class="text-gray-400 mb-4">A clean, responsive e-commerce website built with HTML, CSS, and JavaScript to showcase front-end development skills through a real-world store interface.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-500/20 text-blue-300 px-2 py-1 rounded text-sm">HTML</span>
+                            <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-sm">CSS</span>
+                            <span class="bg-yellow-500/20 text-yellow-300 px-2 py-1 rounded text-sm">JS</span>
                         </div>
                     </div>
-                    
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-primary text-white p-3 rounded-lg">
-                            <i class="fas fa-map-marker-alt text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-800">Location</h3>
-                            <p class="text-gray-600">Nigeria</p>
-                        </div>
-                    </div>
-                    
-                    <div class="pt-8">
-                        <h3 class="font-semibold text-gray-800 mb-4">Follow Me</h3>
-                        <div class="flex space-x-4">
-                            <a href="https://www.linkedin.com/in/ebofin-ayobami-a791591a3/" class="bg-gray-200 hover:bg-primary hover:text-white p-3 rounded-lg transition-colors" target="_blank">
-                                <i class="fab fa-linkedin text-xl"></i>
-                            </a>
-                         
-                          <a href="https://x.com/ebocodes?t=a--Qww7Q4CZ0j-LnwaiIiw&s=09" class="bg-gray-200 hover:bg-primary hover:text-white p-3 rounded-lg transition-colors" target="_blank">
-                                <i class="fab fa-twitter text-xl"></i>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Contact Form -->
-                    <form class="bg-white p-8 rounded-lg shadow-sm" id="contact-form" action="https://formspree.io/f/xblykbrv" method="POST">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_template" value="box">
-                        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
-                    <div class="space-y-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
-                        </div>
-                        
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
-                        </div>
-                        
-                        <div>
-                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
-                            <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
-                        </div>
-                        
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-secondary transition-colors font-semibold">
-                            Send Message
-                        </button>
-                    </div>
-                </form>
+                </a>
             </div>
+
+            <!-- Project 2 -->
+            <div class="glass-effect rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-300" data-aos="fade-up">
+                <a href="https://the-healer-university-sub.netlify.app/" target="_blank" class="block">
+                    <img src="healer2.webp" alt="Home Page Redesign - Practice Project" loading="lazy" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">Home Page Redesign - Practice Project</h3>
+                        <p class="text-gray-400 mb-4">A redesigned, mobile-friendly landing page inspired by an existing website that needed visual and structural improvements. Built as a front-end practice project focused on layout, accessibility, and clean, interactive design.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-500/20 text-blue-300 px-2 py-1 rounded text-sm">HTML5</span>
+                            <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-sm">CSS3</span>
+                            <span class="bg-red-500/20 text-red-300 px-2 py-1 rounded text-sm">JS</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="glass-effect rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-300" data-aos="fade-up">
+                <a href="https://joshlens.netlify.app" target="_blank" class="block">
+                    <img src="joshlens.webp" alt="JoshLens - Photography Booking & Showcase Website" loading="lazy" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">JoshLens - Photography Booking & Showcase Website</h3>
+                        <p class="text-gray-400 mb-4">A fully responsive photography portfolio and booking website built with HTML, Tailwind CSS, and Formspree. It features a sleek hero section, interactive booking form, image gallery, and testimonials—all built on the frontend, making it ideal for small businesses and portfolios.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-500/20 text-blue-300 px-2 py-1 rounded text-sm">Tailwind CSS</span>
+                            <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-sm">HTML5</span>
+                            <span class="bg-orange-500/20 text-orange-300 px-2 py-1 rounded text-sm">JavaScript</span>
+                            <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-sm">Formspree</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="glass-effect rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-300" data-aos="fade-up">
+                <a href="https://mowalekevents.netlify.app" target="_blank" class="block">
+                    <img src="mowalek.png" alt="Mowalek Bridals - Event & Bridal Services Landing Page" loading="lazy" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">Mowalek Bridals - Event & Bridal Services Landing Page</h3>
+                        <p class="text-gray-400 mb-4">A modern, mobile-friendly landing page designed for a bridal and event services brand. Built using HTML, Tailwind CSS, and JavaScript, the website highlights key offerings such as catering, bridal prep, and event décor.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-sm">HTML5</span>
+                            <span class="bg-blue-500/20 text-blue-300 px-2 py-1 rounded text-sm">Tailwind CSS</span>
+                            <span class="bg-orange-500/20 text-orange-300 px-2 py-1 rounded text-sm">JavaScript</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="glass-effect rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-300" data-aos="fade-up">
+                <a href="https://thehealersembassy.org/" target="_blank" class="block">
+                    <img src="heal.png" alt="The Healers Embassy - Business & Cosmic Guidance Site" loading="lazy" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">The Healers Embassy - Business & Cosmic Guidance Site</h3>
+                        <p class="text-sm text-gray-400 italic">Role: Front-End Developer & Active Site Manager (2025 - Present)</p>
+                        <p class="text-gray-400 mb-4">Improved the site’s responsiveness and layout using HTML, Tailwind CSS, and JavaScript, integrated a contact form, and continue to maintain the site's content and user experience.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-sm">HTML5</span>
+                            <span class="bg-blue-500/20 text-blue-300 px-2 py-1 rounded text-sm">Tailwind CSS</span>
+                            <span class="bg-orange-500/20 text-orange-300 px-2 py-1 rounded text-sm">JavaScript</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="glass-effect rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-300" data-aos="fade-up">
+                <a href="https://citypulselive.netlify.app" target="_blank" class="block">
+                    <img src="citypulse.png" alt="CityPulse Live - Concert & Movie Premiere Booking Page" loading="lazy" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">CityPulse Live - Concert & Movie Premiere Booking Page</h3>
+                        <p class="text-gray-400 mb-4">A vibrant, mobile-first landing page designed for a live entertainment experience. Features countdown timer, ticket tiers, booking form linked to Google Sheets, and responsive gallery.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-sm">HTML5</span>
+                            <span class="bg-red-500/20 text-red-300 px-2 py-1 rounded text-sm">Tailwind CSS</span>
+                            <span class="bg-pink-500/20 text-pink-300 px-2 py-1 rounded text-sm">JavaScript</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Project 7 -->
+            <div class="glass-effect rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-300" data-aos="fade-up">
+                <a href="https://skoolmealpal.vercel.app/" target="_blank" class="block">
+                    <img src="mealpal.png" alt="skoolMealPal - A school-based food ordering platform" loading="lazy" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">skoolMealPal - A school-based food ordering platform</h3>
+                        <p class="text-sm text-gray-400 italic">Ongoing Personal Project</p>
+                        <p class="text-gray-400 mb-4">Students browse meals filtered by school, place orders with live tracking, and vendors manage menus, orders, and payments. Full cart + checkout flow with secure vendor login.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-sm">React</span>
+                            <span class="bg-red-500/20 text-red-300 px-2 py-1 rounded text-sm">Tailwind CSS</span>
+                            <span class="bg-pink-500/20 text-pink-300 px-2 py-1 rounded text-sm">Node.js</span>
+                            <span class="bg-red-500/20 text-red-300 px-2 py-1 rounded text-sm">Express</span>
+                            <span class="bg-red-500/20 text-red-300 px-2 py-1 rounded text-sm">MongoDB</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
         </div>
-       </div>
+    </div>
+</section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                    <span class="gradient-text">Let’s Build</span> Something Great
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Have a project in mind? Fill out the form and let’s bring it to life.
+                </p>
+            </div>
+
+		<form id="contact-form" action="https://formspree.io/f/xblykbrv" method="POST" class="glass-effect p-8 rounded-2xl space-y-6">
+			<!-- Hidden Formspree settings -->
+			<input type="hidden" name="_captcha" value="false">
+			<input type="hidden" name="_template" value="box">
+			<input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+
+			<div class="grid md:grid-cols-2 gap-6">
+				<input type="text" name="name" placeholder="Your Name" required
+					   class="w-full p-4 rounded-lg bg-slate-800/50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary text-white">
+				<input type="email" name="email" placeholder="Your Email" required
+					   class="w-full p-4 rounded-lg bg-slate-800/50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary text-white">
+			</div>
+
+			<input type="text" name="subject" placeholder="Subject" required
+				   class="w-full p-4 rounded-lg bg-slate-800/50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary text-white">
+
+			<textarea name="message" rows="6" placeholder="Your Message" required
+					  class="w-full p-4 rounded-lg bg-slate-800/50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary text-white"></textarea>
+
+			<button type="submit"
+					class="bg-gradient-to-r from-primary to-purple-600 text-white px-8 py-4 rounded-full hover:from-primary/80 hover:to-purple-600/80 transition-all duration-300 hover:scale-105 font-semibold">
+				Send Message
+			</button>
+		</form>
+
+		 <!-- Toast Container -->
+			<div id="toast-container" class="fixed bottom-5 right-5 space-y-3 z-50"></div>
+        </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <p class="text-gray-400">
-                    © 2024 Ebofin Ayobami. All rights reserved.
-                </p>
+    <footer class="bg-slate-950 border-t border-white/10 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+             <!--
+                <a href="https://github.com/yourusername" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-github text-2xl"></i>
+                </a>
+                -->
+                <a href="https://www.linkedin.com/in/ebofin-ayobami-a791591a3/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+                <a href="https://x.com/ebocodes?t=a--Qww7Q4CZ0j-LnwaiIiw&s=09" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-twitter text-xl"></i>
+                </a>
             </div>
+            <p class="text-gray-500 text-sm">
+                © <span id="year"></span> Ebofin Ayobami. All rights reserved.
+            </p>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white p-3 rounded-full shadow-lg hover:bg-secondary transition-colors opacity-0 invisible">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        });
-
-        // Navbar background change on scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-white/95');
-                navbar.classList.remove('bg-white/90');
-            } else {
-                navbar.classList.add('bg-white/90');
-                navbar.classList.remove('bg-white/95');
-            }
-        });
-
-
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-  e.preventDefault(); // Stop form from submitting the normal way
-
-  const form = this;
-  const formData = new FormData(form);
-
-  // Basic validation
-  const name = formData.get('name');
-  const email = formData.get('email');
-  const subject = formData.get('subject');
-  const message = formData.get('message');
-
-  if (!name || !email || !subject || !message) {
-    alert('Please fill in all fields.');
-    return;
+  // Navbar blur on scroll
+const nav = document.getElementById("nav");
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    nav.classList.add("scrolled");
+  } else {
+    nav.classList.remove("scrolled");
   }
-
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const originalText = submitBtn.textContent;
-  submitBtn.textContent = 'Sending...';
-  submitBtn.disabled = true;
-
-  // Send to Formspree via fetch
-  fetch(form.action, {
-    method: 'POST',
-    body: formData,
-    headers: {
-      'Accept': 'application/json'
-    }
-  })
-  .then(response => {
-    if (response.ok) {
-      alert("Message sent! Thank you.");
-      form.reset(); // ✅ Clear form after successful submission
-    } else {
-      alert("Oops! Something went wrong.");
-    }
-  })
-  .catch(error => {
-    console.error(error);
-    alert("Error sending message.");
-  })
-  .finally(() => {
-    submitBtn.textContent = originalText;
-    submitBtn.disabled = false;
-  });
 });
 
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  mobileMenuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
 
+  // Init AOS
+  AOS.init({
+    duration: 800,
+    easing: "ease-out",
+    once: true,
+  });
+  
+  
+  //Form actions 
+ function showToast(message, type = "success") {
+    const container = document.getElementById("toast-container");
+    const toast = document.createElement("div");
 
-        // Back to top button
-        const backToTopBtn = document.getElementById('back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.remove('opacity-0', 'invisible');
-                backToTopBtn.classList.add('opacity-100', 'visible');
-            } else {
-                backToTopBtn.classList.add('opacity-0', 'invisible');
-                backToTopBtn.classList.remove('opacity-100', 'visible');
-            }
-        });
-        
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+    toast.className = `px-4 py-3 rounded-lg shadow-lg text-white animate-fade-in-up ${
+        type === "success" ? "bg-green-600" : "bg-red-600"
+    }`;
+    toast.textContent = message;
 
-        // Add fade-in animation on page load
-        window.addEventListener('load', () => {
-            document.querySelector('.animate-fade-in').style.opacity = '1';
-            document.querySelector('.animate-fade-in').style.transform = 'translateY(0)';
-        });
-        
-        
-    </script>
-    
-      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-	  <script>AOS.init();</script>
+    container.appendChild(toast);
+
+    // Remove after 3 seconds
+    setTimeout(() => {
+        toast.classList.add("animate-fade-out-down");
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+
+    const form = this;
+    const formData = new FormData(form);
+
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const subject = formData.get('subject');
+    const message = formData.get('message');
+
+    if (!name || !email || !subject || !message) {
+        showToast('Please fill in all fields.', 'error');
+        return;
+    }
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+        if (response.ok) {
+            showToast("Message sent! Thank you.");
+            form.reset();
+        } else {
+            showToast("Oops! Something went wrong.", "error");
+        }
+    })
+    .catch(error => {
+        console.error(error);
+        showToast("Error sending message.", "error");
+    })
+    .finally(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    });
+});
+  
+</script>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 </body>
 </html>
+
