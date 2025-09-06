@@ -1,67 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ebofin Ayobami - Full-Stack Developer | Business Websites That Convert</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#6366f1',
-                        secondary: '#4f46e5',
-                        accent: '#f59e0b',
-                        dark: '#0f172a',
-                        'glass-white': 'rgba(255, 255, 255, 0.1)',
-                        'glass-dark': 'rgba(15, 23, 42, 0.1)'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif']
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                        'slide-up': 'slideUp 0.5s ease-out',
-                        'fade-in-up': 'fadeInUp 0.6s ease-out',
-                        'bounce-slow': 'bounce 3s infinite',
-                        'pulse-glow': 'pulseGlow 2s infinite',
-                        'gradient-shift': 'gradientShift 3s ease-in-out infinite'
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' }
-                        },
-                        glow: {
-                            '0%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.3)' },
-                            '100%': { boxShadow: '0 0 40px rgba(99, 102, 241, 0.6)' }
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(100%)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' }
-                        },
-                        fadeInUp: {
-                            '0%': { transform: 'translateY(30px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' }
-                        },
-                        pulseGlow: {
-                            '0%, 100%': { transform: 'scale(1)', opacity: '0.8' },
-                            '50%': { transform: 'scale(1.05)', opacity: '1' }
-                        },
-                        gradientShift: {
-                            '0%, 100%': { backgroundPosition: '0% 50%' },
-                            '50%': { backgroundPosition: '100% 50%' }
-                        }
-                    }
-                }
+  <!-- Primary SEO -->
+  <title>Ebofin Ayobami Francis | Full-Stack Web Developer</title>
+  <meta name="description" content="Ebofin Ayobami Francis (aka ebocodes) is a passionate Full-Stack Web Developer based in Nigeria, creating high-performance websites, apps, and digital experiences for businesses.">
+  <meta name="keywords" content="Ebofin Ayobami, ebocodes, Full-Stack Developer, Web Developer Nigeria, Tailwind CSS, React, Node.js, Portfolio, Software Engineer">
+  <meta name="author" content="Ebofin Ayobami Francis">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ebo-ayobami-portfolio.vercel.app/">
+  <meta property="og:title" content="Ebofin Ayobami Francis | Full-Stack Web Developer">
+  <meta property="og:description" content="Portfolio of Ebofin Ayobami (ebocodes), showcasing projects, services, and expertise in web development.">
+  <meta property="og:image" content="https://ebo-ayobami-portfolio.vercel.app/preview.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://ebo-ayobami-portfolio.vercel.app/">
+  <meta name="twitter:title" content="Ebofin Ayobami Francis | Full-Stack Web Developer">
+  <meta name="twitter:description" content="Portfolio of Ebofin Ayobami (ebocodes), showcasing projects, services, and expertise in web development.">
+  <meta name="twitter:image" content="https://ebo-ayobami-portfolio.vercel.app/preview.png">
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ebofin Ayobami Francis",
+    "alternateName": "ebocodes",
+    "jobTitle": "Full-Stack Web Developer",
+    "url": "https://ebo-ayobami-portfolio.vercel.app/",
+    "sameAs": [
+      "https://github.com/EboCodes",
+      "https://www.linkedin.com/in/ebofin-ayobami-a791591a3/",
+      "https://x.com/ebocodes"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lagos",
+      "addressCountry": "Nigeria"
+    }
+  }
+  </script>
+
+  <!-- Tailwind & Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366f1',
+            secondary: '#4f46e5',
+            accent: '#f59e0b',
+            dark: '#0f172a',
+            'glass-white': 'rgba(255, 255, 255, 0.1)',
+            'glass-dark': 'rgba(15, 23, 42, 0.1)'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+            'slide-up': 'slideUp 0.5s ease-out',
+            'fade-in-up': 'fadeInUp 0.6s ease-out',
+            'bounce-slow': 'bounce 3s infinite',
+            'pulse-glow': 'pulseGlow 2s infinite',
+            'gradient-shift': 'gradientShift 3s ease-in-out infinite'
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' }
+            },
+            glow: {
+              '0%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.3)' },
+              '100%': { boxShadow: '0 0 40px rgba(99, 102, 241, 0.6)' }
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(100%)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' }
+            },
+            fadeInUp: {
+              '0%': { transform: 'translateY(30px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' }
+            },
+            pulseGlow: {
+              '0%, 100%': { transform: 'scale(1)', opacity: '0.8' },
+              '50%': { transform: 'scale(1.05)', opacity: '1' }
+            },
+            gradientShift: {
+              '0%, 100%': { backgroundPosition: '0% 50%' },
+              '50%': { backgroundPosition: '100% 50%' }
             }
+          }
         }
-    </script>
+      }
+    }
+  </script>
     
     <style>
         body {
