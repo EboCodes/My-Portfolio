@@ -2,27 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://yourwebsite.com/</loc>
+    <loc>https://ebo-ayobami-portfolio.vercel.app/</loc>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://yourwebsite.com/#about</loc>
+    <loc>https://ebo-ayobami-portfolio.vercel.app/#about</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yourwebsite.com/#services</loc>
+    <loc>https://ebo-ayobami-portfolio.vercel.app/#services</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yourwebsite.com/#projects</loc>
+    <loc>https://ebo-ayobami-portfolio.vercel.app/#projects</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yourwebsite.com/#contact</loc>
+    <loc>https://ebo-ayobami-portfolio.vercel.app/#contact</loc>
     <priority>0.7</priority>
   </url>
 
