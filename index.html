@@ -85,6 +85,34 @@ a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
+/* FOCUS VISIBILITY (keyboard users) */
+a:focus-visible,
+button:focus-visible,
+.form-input:focus-visible,
+.form-textarea:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.project-card:focus-visible .project-arrow { opacity: 1; transform: translateY(0); }
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-dot { animation: none; opacity: 1; }
+  .reveal { transition: opacity 0.3s ease; transform: none; }
+  .project-img { transition: filter 0.3s ease; }
+  .project-card:hover .project-img { transform: none; }
+  .toast { animation: none; }
+  .btn-primary, .btn-outline, .nav-cta, .nav-burger { transition: background 0.15s, border-color 0.15s, color 0.15s; }
+  .btn-primary:active, .btn-outline:active, .nav-cta:active, .nav-burger:active { transform: none; }
+}
+
+/* REDUCED TRANSPARENCY */
+@media (prefers-reduced-transparency: reduce) {
+  .nav.scrolled { background: var(--bg); backdrop-filter: none; }
+  .nav-drawer { background: var(--bg); }
+}
+
 /* GRAIN OVERLAY */
 body::before {
   content: '';
@@ -143,25 +171,41 @@ body::before {
   padding: 0.55rem 1.4rem;
   border: 1px solid var(--gold-dim);
   color: var(--gold);
-  transition: all 0.25s;
+  transition: background 0.25s, color 0.25s, transform 100ms ease-out;
 }
 .nav-cta:hover { background: var(--gold); color: var(--bg); }
+.nav-cta:active { transform: scale(0.96); }
 
 .nav-burger {
-  display: none; flex-direction: column; gap: 5px; padding: 4px;
+  display: none; flex-direction: column; gap: 5px;
+  width: 44px; height: 44px;
+  align-items: center; justify-content: center;
+  transition: transform 100ms ease-out;
 }
+.nav-burger:active { transform: scale(0.92); }
 .nav-burger span { display: block; width: 22px; height: 1.5px; background: var(--text); transition: 0.3s; }
 
 .nav-drawer {
-  display: none; position: fixed;
+  position: fixed;
   top: var(--nav-h); left: 0; right: 0;
   background: rgba(13,13,13,0.98);
   border-bottom: 1px solid var(--border);
   padding: 2rem 5vw 2.5rem;
   z-index: 99;
-  flex-direction: column; gap: 1.5rem;
+  display: flex; flex-direction: column; gap: 1.5rem;
+  opacity: 0; transform: translateY(-8px);
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+  pointer-events: none;
 }
-.nav-drawer.open { display: flex; }
+.nav-drawer.open {
+  opacity: 1; transform: none; visibility: visible;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0s;
+  pointer-events: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-drawer { transform: none; }
+}
 .nav-drawer a {
   font-size: 0.85rem; font-weight: 400;
   letter-spacing: 0.12em; text-transform: uppercase;
@@ -273,9 +317,10 @@ body::before {
   font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
   padding: 0.9rem 2rem;
   background: var(--gold); color: var(--bg);
-  transition: all 0.25s;
+  transition: background 0.25s, border-color 0.25s, color 0.25s, transform 100ms ease-out;
 }
 .btn-primary:hover { background: var(--cream); }
+.btn-primary:active { transform: scale(0.97); }
 
 .btn-outline {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -283,9 +328,10 @@ body::before {
   padding: 0.9rem 2rem;
   border: 1px solid var(--border2);
   color: var(--muted);
-  transition: all 0.25s;
+  transition: border-color 0.25s, color 0.25s, transform 100ms ease-out;
 }
 .btn-outline:hover { border-color: var(--gold-dim); color: var(--cream); }
+.btn-outline:active { transform: scale(0.97); }
 
 .hero-img-wrap {
   position: relative; flex-shrink: 0;
@@ -1151,7 +1197,7 @@ body::before {
        <!-- Italianbridgenigeria -->
       <a href="https://www.italianbridgenigeria.com/" target="_blank" class="project-card featured">
         <div class="project-img-wrap">
-          <img src="italianbridge.jpg" alt="skoolMealPal" class="project-img" loading="lazy">
+          <img src="italianbridge.jpg" alt="Italian Bridge Hub - Nigeria" class="project-img" loading="lazy">
           <div class="project-arrow"><i class="fas fa-arrow-up-right-from-square"></i></div>
         </div>
         <div class="project-body">
